@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>my fun page</title>
+</head>
+<body>
+    <h1>My Fun Page ... Let's Experiment</h1>
+
+<!-- <h1>Promise Intro</h1> -->
+<h1 id = "result"></h1>
+<div id ='result'></div>
+ <script src="firebase.js"></script>
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCrgxcoqvni_WVSj5gjOS_9vkf0Nf5iW1c",
+    authDomain: "savvycoders-kris.firebaseapp.com",
+    databaseURL: "https://savvycoders-kris.firebaseio.com",
+    projectId: "savvycoders-kris",
+    storageBucket: "savvycoders-kris.appspot.com",
+    messagingSenderId: "1065744112782",
+    appId: "1:1065744112782:web:a49739abf1571c17e07ddf"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var db = firebase.firestore();
+//   console.log(db.collection("persons"));
+
+
+// this will add a document to the database
+// db.collection("persons").add({
+//     firstName: "Ada",
+//     lastName: "Lovelace",
+//     birthDate: 1815
+// })
+// .then(function(docRef) {
+//     console.log("Document written with ID: ", docRef.id);
+// })
+// .catch(function(error) {
+//     console.error("Error adding document: ", error);
+// });
+
+// will add a document or edit the existing document
+// in the database
+// db.collection("persons").doc("test").set({
+//     firstName: "steven",
+//     lastName: "reasor",
+//     aka: "easily distracted by cows",
+//     birthDate: 07061958
+// })
+// .then(function(docRef) {
+//     console.log("Document written with ID: ", docRef.id);
+// })
+// .catch(function(error) {
+//     console.error("Error adding document: ", error);
+// });
+
+// this prints it to the console
+//   db.collection("persons").get().then((querySnapshot) => {
+//     querySnapshot.forEach((doc) => {
+//         console.log(doc.data().firstName);
+//     });
+// });
+
+db.collection("persons").where("lastName", "==", "Cunningham").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+    });
+});   
+
+</script>
+</body>
+</html>
+
